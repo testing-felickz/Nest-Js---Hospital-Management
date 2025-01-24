@@ -5,8 +5,8 @@
 ![image](https://github.com/user-attachments/assets/5140cea3-04bc-46dd-ba8a-019247079750)
 
 
-## [`NestJSRequestWithoutGaurd.ql`](https://github.com/testing-felickz/Nest-Js---Hospital-Management/blob/main/.github/codeql/NestJSRequestWithoutGaurd.ql)
-- [Docs](https://github.com/testing-felickz/Nest-Js---Hospital-Management/blob/main/.github/codeql/NestJSRequestWithoutGaurd.md)
+## [`NestJSRequestWithoutguard.ql`](https://github.com/testing-felickz/Nest-Js---Hospital-Management/blob/main/.github/codeql/NestJSRequestWithoutguard.ql)
+- [Docs](https://github.com/testing-felickz/Nest-Js---Hospital-Management/blob/main/.github/codeql/NestJSRequestWithoutguard.md)
 
 ### Purpose
 This CodeQL query identifies NestJS enpoints (currently controllers) that do not have a `@UseGuards` decorator. The absence of this decorator can indicate a potential security risk, as it means that the controller's endpoints may not be properly protected by authorization guards.
