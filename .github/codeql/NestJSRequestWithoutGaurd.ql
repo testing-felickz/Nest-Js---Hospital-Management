@@ -13,6 +13,13 @@
  *       
  */
 
+// Potential Enhancements
+// - Allow for Controllers without Gaurd if all endpoints have a Gaurd applied (also loop through MethodDefinitions not just ClassDefinitions)
+// - Allow for a list of known endpoints where guards that are not required (consider using data extensions)
+// - Detect use of global scoped gaurds `app.useGlobalGuards` (dependency injection cases)
+// - Detect Gaurds that do not apply authorization (heurestics by name or by allowlist in data extensions for strict enforcement)
+// - IF wish to turn this into a security severity (critical/high/medium/low) - add @security-severity tag followed by the #.# CVSS score
+
 import javascript
 
 // Find all NestJS `@Controller`'s that do not have a `@UseGuards` decorator
