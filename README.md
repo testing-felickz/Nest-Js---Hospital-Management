@@ -1,3 +1,61 @@
+# CodeQL Custom Query Sample
+
+- Run with CodeQL via Advanced setup [here](https://github.com/testing-felickz/Nest-Js---Hospital-Management/blob/main/.github/workflows/codeql.yml#L71) 
+
+![image](https://github.com/user-attachments/assets/5140cea3-04bc-46dd-ba8a-019247079750)
+
+
+## [`NestJSRequestWithoutGaurd.ql`](https://github.com/testing-felickz/Nest-Js---Hospital-Management/blob/main/.github/codeql/NestJSRequestWithoutGaurd.ql)
+- [Docs](https://github.com/testing-felickz/Nest-Js---Hospital-Management/blob/main/.github/codeql/NestJSRequestWithoutGaurd.md)
+
+### Purpose
+This CodeQL query identifies NestJS enpoints (currently controllers) that do not have a `@UseGuards` decorator. The absence of this decorator can indicate a potential security risk, as it means that the controller's endpoints may not be properly protected by authorization guards.
+
+### Description
+- **Query Name**: NestJS Controller without UseGuards
+- **Severity**: Warning
+- **Tags**: Security, Correctness, CWE-284, CWE-285, CWE-862
+- **Precision**: High
+
+### How It Works
+1. **Imports**: The query imports the `javascript` library to analyze JavaScript/TypeScript code.
+2. **Class and Decorator Identification**: The query looks for class definitions (`ClassDefinition`) that have a `@Controller` decorator.
+3. **Decorator Check**: It checks if these classes do not have a `@UseGuards` decorator.
+4. **VarRef Usage**: The query uses `VarRef` to get the names of the decorators and ensure they match `Controller` and `UseGuards`.
+5. **Exclusion**: If a class has a `@Controller` decorator but does not have a `@UseGuards` decorator, it is selected as a potential issue.
+
+### Potential Enhancements
+- Allow for controllers without guards if all endpoints have guards applied.
+- Allow for a list of known endpoints where guards are not required.
+- Detect the use of global scoped guards (`app.useGlobalGuards`).
+- Detect guards that do not apply authorization (heuristics by name or by allowlist in data extensions).
+- Add a security severity tag with a CVSS score for more granular severity classification.
+
+### Example
+```typescript
+import {Controller } from '@nestjs/common'
+
+// BAD: No @UseGuards
+@Controller()
+export class AppController {
+...
+```
+
+
+```typescript
+import { Controller, UseGuards } from '@nestjs/common'
+
+// GOOD: uses @UseGuards
+@Controller('/doctors')
+@UseGuards(new RolesGuard())
+export default class DoctorsController{
+...
+```
+
+
+# Nest Sample
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
