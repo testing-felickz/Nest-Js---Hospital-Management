@@ -11,20 +11,21 @@ Guards have a single responsibility. They determine whether a given request will
 ```ts
 import {Controller } from '@nestjs/common'
 
-// BAD: uses @UseGuards
-@Controller('/doctors')
-@UseGuards(new RolesGuard())
-@UseInterceptors(new LoggingInterceptor())
-export default class DoctorsController{
+// BAD: No @UseGuards
+@Controller()
+export class AppController {
+...
 ```
 
 
 ```ts
 import { Controller, UseGuards } from '@nestjs/common'
+
 // GOOD: uses @UseGuards
 @Controller('/doctors')
 @UseGuards(new RolesGuard())
 export default class DoctorsController{
+...
 ```
 
 ## References
