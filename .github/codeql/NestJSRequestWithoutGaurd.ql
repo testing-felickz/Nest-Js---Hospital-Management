@@ -26,4 +26,4 @@ where
         guardVarRef.getParentExpr() = guardDecorator.getExpression() and
         guardVarRef.getName() = "UseGuards"
     )
-select controllerVarRef, "This $@ does not have a @UseGuards decorator.", controller, "here"
+select controllerVarRef, "This $@ does not have a @UseGuards decorator.", controller, "endpoint"
