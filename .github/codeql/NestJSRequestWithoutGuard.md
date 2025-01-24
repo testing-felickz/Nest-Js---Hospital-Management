@@ -29,4 +29,4 @@ export default class DoctorsController{
 ```
 
 ## References
-- [Gaurds | NestJS](https://docs.nestjs.com/guards)
+- [guards | NestJS](https://docs.nestjs.com/guards)
