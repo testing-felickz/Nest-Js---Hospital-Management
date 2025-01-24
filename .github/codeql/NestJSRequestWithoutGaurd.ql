@@ -4,7 +4,12 @@
  * @kind problem
  * @problem.severity warning
  * @id js/nestjs-controller-without-useguards
- * @tags reliability
+ * @tags security
+ *       correctness
+ *       external/cwe/cwe-284
+ *       external/cwe/cwe-285
+ *       external/cwe/cwe-862
+ * @precision high
  *       
  */
 
